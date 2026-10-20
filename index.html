@@ -49,7 +49,7 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--paper)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--paper);scrollbar-color:var(--navy) var(--paper)}
 body{margin:0;font:16px/1.7 var(--text);color:var(--body);background:var(--paper)}
 ::selection{background:var(--gold);color:var(--ink)}
 img,svg{display:block}
@@ -90,23 +90,24 @@ section{padding:64px 0}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;padding-top:max(8px,env(safe-area-inset-top))}
 .brand{display:flex;flex-direction:column;justify-content:center;min-height:44px;text-decoration:none;line-height:1}
 .brand b{font:400 22px/1 var(--display);letter-spacing:.04em}
-.brand span{font:600 11px/1 var(--text);letter-spacing:.08em;white-space:nowrap;text-transform:uppercase;color:var(--soft);margin-top:5px}
-.tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 2px;font:400 17px/1 var(--display);text-decoration:none;white-space:nowrap;word-spacing:-.15em}
+.brand span{font:600 12px/1 var(--text);letter-spacing:.08em;white-space:nowrap;text-transform:uppercase;color:var(--soft);margin-top:5px}
+.tel{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 2px;font:400 18px/1 var(--display);text-decoration:none;white-space:nowrap;word-spacing:-.15em}
 .tel svg{width:18px;height:18px;flex:none;color:var(--gold-ink)}
-.tel.soon{font:500 14px/1.2 var(--text);color:var(--soft);word-spacing:normal;text-align:right}
+.tel.fbtop{word-spacing:normal}
+.tel.fbtop svg{color:var(--navy)}
 
 /* ---------- Hero: their own painted room under a navy veil ---------- */
 .hero{padding:0;position:relative;background:var(--deep);color:var(--on-dark);overflow:hidden;isolation:isolate}
 .hero picture,.hero picture img{position:absolute;inset:0;width:100%;height:100%}
 .hero picture img{object-fit:cover;object-position:50% 40%;z-index:-2}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(16,35,63,.78) 0%,rgba(16,35,63,.62) 45%,rgba(16,35,63,.86) 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(16,35,63,.80) 0%,rgba(16,35,63,.74) 55%,rgba(16,35,63,.88) 100%)}
 .hero-copy{position:relative;display:grid;gap:20px;justify-items:start;padding-top:56px;padding-bottom:64px;min-height:min(560px,calc(100svh - 64px));align-content:center}
 .hero h1{color:#fff;font-size:clamp(44px,13vw,84px);line-height:1.02}
 /* H1 bounce-in (after lpmr.co.uk): each letter slides in from 50px right with a slight overshoot, 20ms apart */
 .hero h1 .w{display:inline-block;white-space:nowrap}
 .hero h1 .c{display:inline-block;opacity:0;transform:translateX(50px);animation:letter-in 1s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:calc(var(--i) * 20ms)}
 @keyframes letter-in{to{opacity:1;transform:none}}
-.promise{font-size:clamp(17px,4.7vw,20px);line-height:1.5;color:var(--on-dark);max-width:28ch}
+.promise{font-size:clamp(17px,4.7vw,20px);line-height:1.5;color:var(--on-dark);max-width:28ch;text-wrap:balance}
 .actions{display:grid;gap:12px;width:100%;margin-top:4px}
 
 /* ---------- Services: rows on navy, only the arrow changes on hover ---------- */
@@ -123,7 +124,8 @@ section{padding:64px 0}
 .claims li{display:flex;align-items:center;gap:16px;padding:16px 0;font:400 clamp(20px,5.4vw,24px)/1.15 var(--display);color:var(--ink)}
 .claims li+li{border-top:1px solid var(--line)}
 .claims svg{width:40px;height:40px;flex:none;color:var(--gold-ink)}
-.fb{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px;padding:14px 16px 14px 22px;border-radius:20px;background:var(--navy);color:var(--on-dark);text-decoration:none;font:400 clamp(19px,5.2vw,21px)/1.2 var(--display);max-width:460px}
+.work{width:100%;max-width:460px;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r-card);margin-top:28px}
+.fb{margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px;padding:14px 16px 14px 22px;border-radius:20px;background:var(--navy);color:var(--on-dark);text-decoration:none;font:400 clamp(19px,5.2vw,21px)/1.2 var(--display);max-width:460px}
 .fb:hover,.fb:focus-visible{outline:none;box-shadow:none}
 .fb .lbl{display:flex;align-items:center;gap:14px}
 .fb .lbl svg{width:28px;height:28px;flex:none;color:#fff}
@@ -141,8 +143,8 @@ section{padding:64px 0}
 .ask .wrap{display:grid;gap:28px}
 form{background:var(--card);border-radius:var(--r-card);padding:clamp(20px,5vw,32px);display:grid;gap:20px;max-width:600px;box-shadow:0 12px 32px rgba(16,35,63,.06)}
 .field{display:grid;gap:8px;min-width:0}
-.field label,.field legend{font:400 17px/1.2 var(--display);color:var(--ink);padding:0}
-.field small{font:400 14px/1 var(--text);color:var(--soft);margin-left:4px}
+.field label,.field legend{font:400 18px/1.3 var(--display);color:var(--ink);padding:0}
+.field small{font:400 15px/1 var(--text);color:var(--soft);margin-left:4px}
 fieldset{border:0;margin:0;padding:0;min-width:0}
 input[type=text],textarea{width:100%;font:16px/1.4 var(--text);color:var(--ink);background:var(--field);border:2px solid transparent;border-radius:var(--r-field);padding:13px 14px;min-height:52px;caret-color:var(--navy);transition:border-color .15s}
 textarea{min-height:120px;resize:vertical}
@@ -157,21 +159,21 @@ input[type=text]:focus,textarea:focus{outline:none;border-color:var(--focus)}
 .err{display:none;font-size:15px;color:var(--error)}
 .field.bad .err{display:block}
 .field.bad input[type=text],.field.bad textarea,.field.bad input[type=text]:focus,.field.bad textarea:focus{border-color:var(--error)}
-form .btn-primary{width:100%}
-form .btn-primary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#send{width:100%}
+form .btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .after{font-size:15px;color:var(--soft)}
 /* No phone yet: the finished message, ready to copy and send on Facebook */
 .ready{display:grid;gap:12px;padding:18px;border-radius:16px;background:var(--field);color:var(--ink)}
-.ready b{font:400 19px/1.2 var(--display)}
+.ready b{font:400 19px/1.3 var(--display)}
 .ready output{display:block;font:16px/1.5 var(--text);white-space:pre-wrap;background:var(--card);border-radius:var(--r-field);padding:12px 14px;user-select:all;-webkit-user-select:all}
 .ready .btns{display:grid;gap:10px}
 .btn-line{background:var(--card);color:var(--ink);border-color:var(--ink)}
 .sent{color:var(--ink);font-weight:600}
 .sent a{white-space:nowrap;display:inline-block;padding:11px 0;margin:-11px 0}
 @media (max-width:380px){.chips label{padding:0 14px}}
+@media (max-width:340px){.brand span{letter-spacing:.04em}.top .wrap{gap:8px}}
 
 /* ---------- Close ---------- */
-.close .who{margin-top:14px;font-size:clamp(18px,5vw,20px);color:var(--on-dark)}
 .bigtel{display:inline-flex;align-items:center;gap:12px;margin-top:28px;font:400 clamp(30px,9vw,52px)/1 var(--display);text-decoration:none;color:var(--on-dark);min-height:56px;white-space:nowrap;word-spacing:-.15em}
 .bigtel svg{width:.8em;height:.8em;flex:none;color:var(--gold)}
 .area{margin-top:22px;max-width:44ch}
@@ -185,8 +187,8 @@ footer nav{display:flex;flex-wrap:wrap;gap:6px 22px}
 footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-dark);text-decoration:none}
 
 /* ---------- Floating circle (one circle, never a bottom bar) ---------- */
-.float{position:fixed;z-index:15;right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);box-shadow:0 10px 28px rgba(8,24,46,.3);transform:translateY(120px);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-.float.on{transform:none}
+.float{visibility:hidden;position:fixed;z-index:15;right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom));width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);box-shadow:0 10px 28px rgba(8,24,46,.3);transform:translateY(120px);transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.float.on{visibility:visible;transform:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .float svg{width:26px;height:26px}
 .float:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:50%}
 
@@ -200,7 +202,6 @@ footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-d
   .top .wrap{min-height:76px}
   .brand b{font-size:26px}
   .tel{font-size:20px}
-  .tel.soon{font-size:15px}
   section{padding:96px 0}
   .hero picture img{object-position:50% 50%}
   .hero::after{background:linear-gradient(90deg,rgba(16,35,63,.90) 0%,rgba(16,35,63,.74) 42%,rgba(16,35,63,.22) 100%)}
@@ -209,16 +210,16 @@ footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-d
   .actions{grid-auto-flow:column;justify-content:start;width:auto}
   .actions .btn{min-width:240px}
   .rows{grid-template-columns:1fr 1fr;column-gap:48px}
-  .rows li+li{border-top:0}
-  .rows li{border-top:1px solid rgba(255,255,255,.14)}
+  .rows li,.rows li+li{border-top:1px solid rgba(255,255,255,.14)}
   .ready .btns{grid-auto-flow:column;justify-content:start}
 }
 @media (min-width:1024px){
   .split{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;column-gap:64px;align-items:start}
-  .split .claims{grid-column:2;grid-row:1/3;margin-top:0}
-  .split .fb{grid-column:1;grid-row:2}
+  .split{grid-template-rows:auto auto 1fr}
+  .split .claims{grid-column:1;grid-row:2}
+  .split .fb{grid-column:1;grid-row:3;align-self:start}
+  .split .work{grid-column:2;grid-row:1/4;margin-top:0;max-width:none}
   .ask .wrap{grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
-  .ask .head{position:sticky;top:40px}
   .close .wrap{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
   .bigtel{margin-top:0}
   .how .steps{grid-template-columns:repeat(3,1fr);gap:40px}
@@ -226,13 +227,13 @@ footer a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-d
 }
 /* hover styles only where there is a real pointer, so taps don't leave them stuck on */
 @media (hover:hover){
-.tel:not(.soon):hover{color:var(--gold-ink)}
+.tel:hover{color:var(--gold-ink)}
 .btn-primary:hover{background:var(--gold-2);border-color:var(--gold-2)}
 .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
 .row:hover .arrow,.fb:hover .arrow{background:var(--gold);color:var(--ink)}
 input[type=text]:hover,textarea:hover{border-color:var(--focus)}
 .chips label:hover{border-color:var(--focus)}
-form .btn-primary:hover,.btn-line:hover{outline:2px solid var(--focus);outline-offset:2px}
+#send:hover,.ready .btn:hover{outline:2px solid var(--focus);outline-offset:2px}
 .sent a:hover{color:var(--navy)}
 .bigtel:hover{color:var(--gold)}
 footer a:hover{color:var(--gold)}
@@ -251,7 +252,7 @@ THESIS: A painting and drywall crew with no web presence gets a calm, orderly si
 OWN-WORLD: Their own freshly painted room (the only photo they've posted) under a deep navy veil; off-white paper and painter's-tape navy (#1f3f6e) bands, deep navy (#10233f, faint diagonal lines) for How it works and the footer; warm hallway-light gold (#f2b84b) as the one accent, fills only, #8a5a00 when it has to be text on light. Cal Sans display, system body at 16/1.7.
 STORY: The visitor sees who does walls in Windsor, sees what they do, believes they take care in a home (tape, covered floors, guaranteed work), and asks for a free estimate.
 FIRST VIEWPORT: Paper header with the A.H.R wordmark left and the phone slot top right. Photo hero: eyebrow (free estimates, no obligation), "Walls done right in Windsor.", their slogan as the promise, two pill buttons (Get my free estimate, See what we do).
-FORM: calm-photo band system with a photo hero; the estimate form composes a text once CONFIG.PHONE is set, and a ready-to-send Facebook message until then.
+FORM: calm-photo band system with a photo hero; the estimate form composes a text once CONFIG.PHONE is set, and a ready-to-send Facebook message until then. seed: none (calm-photo house default, no concept roll)
 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -262,8 +263,8 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Ahmed Home Renovation, back to top"><b>A.H.R</b><span>Ahmed Home Renovation</span></a>
-    <!-- Phone slot: set CONFIG.PHONE below and this becomes the tap-to-call number -->
-    <span class="tel soon" id="tel">Phone coming soon</span>
+    <!-- Phone slot: until CONFIG.PHONE is set this is their Facebook; then it becomes the tap-to-call number -->
+    <a class="tel fbtop" id="tel" data-fb href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
   </div>
 </header>
 
@@ -271,12 +272,12 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
 <section class="hero" id="hero" aria-labelledby="h1">
   <picture>
     <source media="(min-width:760px)" srcset="hero-wide.webp" width="1600" height="1152">
-    <img src="hero-tall.webp" width="720" height="1012" alt="" decoding="async" fetchpriority="high">
+    <img src="hero-tall.webp" width="820" height="1152" alt="" decoding="async" fetchpriority="high">
   </picture>
   <div class="wrap hero-copy">
     <p class="eyebrow">Free estimates, no obligation</p>
     <h1 id="h1">Walls done<br> right in<br> <span class="accent">Windsor.</span></h1>
-    <p class="promise">Quality you can trust, at prices you'll love.</p>
+    <p class="promise">Quality you can trust, prices you'll love.</p>
     <div class="actions">
       <a class="btn btn-primary" href="#ask">Get my free estimate</a>
       <a class="btn btn-ghost" href="#services">See what we do</a>
@@ -304,12 +305,13 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
       <p class="lede" style="margin-top:16px">Before a brush comes out, we tape the trim and cover your floors. The details are the job, whether it's one patch or a whole floor.</p>
     </div>
     <ul class="claims">
-      <li class="rise"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h24v28H8z"/><path d="M14 14h12M14 20h12M14 26h7"/></svg>Free estimates, no obligation</li>
+      <li class="rise"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h24v28H8z"/><path d="M14 14h12M14 20h12M14 26h7"/></svg>Attention to detail &amp; customer satisfaction</li>
       <li class="rise"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4l13 5v9c0 8.5-5.6 15.3-13 18-7.4-2.7-13-9.5-13-18V9z"/><path d="M14 20l4.5 4.5L27 16"/></svg>Quality workmanship, guaranteed</li>
       <li class="rise"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 20L20 6h14v14L20 34z"/><circle cx="27" cy="13" r="2.5"/></svg>Fair, competitive prices</li>
     </ul>
-    <a class="fb rise" id="fbWork" href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener">
-      <span class="lbl"><svg aria-hidden="true"><use href="#i-fb"/></svg>See more of our work on Facebook</span>
+    <img class="work rise" src="care.webp" width="920" height="1152" loading="lazy" decoding="async" alt="A room we just painted: taupe walls, painter's tape on the baseboard, the floor covered">
+    <a class="fb rise" id="fbWork" data-fb href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener">
+      <span class="lbl"><svg aria-hidden="true"><use href="#i-fb"/></svg>See this job on Facebook</span>
       <span class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></span>
     </a>
   </div>
@@ -319,9 +321,9 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
   <div class="wrap">
     <h2 id="h-how" class="rise">How it <span class="accent">works.</span></h2>
     <ol class="steps">
-      <li class="rise"><div><b>Tell us about the job.</b><span>A few lines is plenty. Add a photo if you have one.</span></div></li>
-      <li class="rise"><div><b>Get your free estimate.</b><span>No obligation, and no pressure.</span></div></li>
-      <li class="rise"><div><b>We do it right.</b><span>Quality workmanship, guaranteed.</span></div></li>
+      <li class="rise"><div><b>Tell us about the job.</b><span>A few lines is plenty. You can add photos when you send it.</span></div></li>
+      <li class="rise"><div><b>Get your free estimate.</b><span>We'll tell you what it takes and what it costs.</span></div></li>
+      <li class="rise"><div><b>We do it right.</b><span>Trim taped, floors covered, work guaranteed.</span></div></li>
     </ol>
   </div>
 </section>
@@ -329,7 +331,7 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
 <section class="on-paper ask" id="ask" aria-labelledby="h-ask">
   <div class="wrap">
     <div class="head rise">
-      <p class="eyebrow">No obligation</p>
+      <p class="eyebrow">Windsor and area</p>
       <h2 id="h-ask">Get your free estimate</h2>
       <p class="lede">Not sure it's something we do? Ask anyway.</p>
     </div>
@@ -339,37 +341,39 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
         <div class="chips">
           <input type="radio" name="job" id="j1" value="Painting"><label for="j1">Painting</label>
           <input type="radio" name="job" id="j2" value="Drywall"><label for="j2">Drywall</label>
-          <input type="radio" name="job" id="j3" value="Repairs"><label for="j3">Wall or ceiling repair</label>
+          <input type="radio" name="job" id="j3" value="Repairs"><label for="j3">Wall or ceiling</label>
           <input type="radio" name="job" id="j4" value="Renovation"><label for="j4">Renovation</label>
           <input type="radio" name="job" id="j5" value="Something else"><label for="j5">Something else</label>
         </div>
       </fieldset>
       <div class="field" id="f-name">
         <label for="name">Your name</label>
-        <input type="text" id="name" name="name" autocomplete="name" maxlength="60" placeholder="First name is fine" aria-describedby="e-name">
+        <input type="text" id="name" name="name" autocomplete="name" maxlength="60" placeholder="First name is fine" aria-describedby="e-name" dir="auto">
         <p class="err" id="e-name">Add your name so we know who's asking.</p>
       </div>
       <div class="field" id="f-what">
         <label for="what">Tell us a bit about it</label>
-        <textarea id="what" name="what" maxlength="600" placeholder="Two bedrooms and a hallway, a hole in the ceiling, a basement to finish…" aria-describedby="e-what"></textarea>
+        <textarea id="what" name="what" maxlength="600" dir="auto" placeholder="Two bedrooms and a hallway, a hole in the ceiling, a basement to finish…" aria-describedby="e-what"></textarea>
         <p class="err" id="e-what">A line or two about the job helps us price it.</p>
       </div>
       <div class="field">
         <label for="where">Your town <small>(optional)</small></label>
-        <input type="text" id="where" name="where" autocomplete="address-level2" maxlength="60" placeholder="e.g. LaSalle">
+        <input type="text" id="where" name="where" autocomplete="address-level2" maxlength="60" dir="auto" placeholder="e.g. LaSalle">
       </div>
       <button class="btn btn-primary" type="submit" id="send"><svg aria-hidden="true"><use href="#i-chat"/></svg><span>Write my message</span></button>
       <p class="after" id="after">We'll write it out for you to send on Facebook.</p>
-      <div class="ready" id="ready" role="status" hidden>
-        <b>Your message is ready.</b>
-        <output id="msg"></output>
+      <div class="ready" id="ready" hidden>
+        <b role="status">Your message is ready. Copy it, then send it to us on Facebook.</b>
+        <output id="msg" dir="auto"></output>
         <div class="btns">
           <button class="btn btn-line" type="button" id="copy">Copy message</button>
-          <a class="btn btn-primary" id="fbSend" href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Send it on Facebook</a>
+          <a class="btn btn-primary" id="fbSend" data-fb href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Open our Facebook post</a>
         </div>
+        <p class="after">Paste it in a private message, not a public comment.</p>
       </div>
       <p class="sent" id="sent" role="status" hidden></p>
     </form>
+    <noscript><p class="after">Message us on <a href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener">Facebook</a> with your job and town.</p></noscript>
   </div>
 </section>
 
@@ -377,7 +381,6 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
   <div class="wrap">
     <div class="rise">
       <h2 id="h-close">Ahmed Home Renovation</h2>
-      <p class="who">Quality you can trust, prices you'll love.</p>
       <p class="area"><b>Where we work:</b> Windsor, LaSalle, Tecumseh, Amherstburg and the surrounding areas.</p>
     </div>
     <a class="bigtel rise" id="bigtel" href="#" hidden><svg aria-hidden="true"><use href="#i-phone"/></svg><span></span></a>
@@ -389,7 +392,7 @@ FORM: calm-photo band system with a photo hero; the estimate form composes a tex
   <div class="wrap">
     <span>Ahmed Home Renovation (A.H.R) · Windsor, Ontario<span id="footTel"></span></span>
     <nav aria-label="Contact">
-      <a href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener">Facebook</a>
+      <a data-fb href="https://www.facebook.com/groups/1043573412799214/posts/2507491966407344/" rel="noopener">Facebook</a>
     </nav>
   </div>
 </footer>
@@ -406,6 +409,7 @@ var CONFIG = {
   FLOAT: true           // the floating circle; false removes it
 };
 document.documentElement.classList.add('js');
+[].forEach.call(document.querySelectorAll('[data-fb]'),function(a){a.href=CONFIG.FB});
 
 /* ===== Phone switch: once CONFIG.PHONE is set, every contact point calls or texts ===== */
 (function(){
@@ -468,7 +472,8 @@ document.documentElement.classList.add('js');
     mark('f-name',!name);mark('f-what',!what);
     if(!name){document.getElementById('name').focus();return}
     if(!what){document.getElementById('what').focus();return}
-    var msg=CONFIG.GREETING+', this is '+name+'. I\'d like a free estimate'+(job&&job.value!=='Something else'?' for '+job.value.toLowerCase():'')+'. '+what.replace(/[.\s]+$/,'')+'.';
+    var w=what.replace(/[.\s]+$/,'');
+    var msg=CONFIG.GREETING+', this is '+name+'. I\'d like a free estimate'+(job&&job.value!=='Something else'?' for '+job.value.toLowerCase():'')+'. '+w+(/[!?]$/.test(w)?'':'.');
     if(where)msg+=' I\'m in '+where+'.';
     if(CONFIG.PHONE){
       location.href='sms:'+CONFIG.PHONE+'?&body='+encodeURIComponent(msg);
@@ -477,12 +482,13 @@ document.documentElement.classList.add('js');
       return;
     }
     out.textContent=msg;ready.hidden=false;document.getElementById('after').hidden=true;
+    var s=document.getElementById('send');s.classList.replace('btn-primary','btn-line');s.querySelector('span').textContent='Update my message';
     ready.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   });
   // copy can be blocked in Facebook's in-app browser; the message stays selectable either way
   document.getElementById('copy').addEventListener('click',function(){
     var b=this,text=out.textContent;
-    function done(ok){b.textContent=ok?'Copied':'Select the message above to copy it';setTimeout(function(){b.textContent='Copy message'},2400)}
+    function done(ok){b.textContent=ok?'Copied. Now open Facebook and paste it.':'Select the message above to copy it';setTimeout(function(){b.textContent='Copy message'},2400)}
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){done(true)},function(){done(false)})}
     else{var r=document.createRange();r.selectNodeContents(out);var s=getSelection();s.removeAllRanges();s.addRange(r);var ok=false;try{ok=document.execCommand('copy')}catch(_){}done(ok)}
   });
